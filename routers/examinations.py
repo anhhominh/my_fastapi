@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Depends
-from requests import Session
-
+from sqlalchemy.orm import Session
 from configs.databases import get_db
 from schemas.examinations_schema import CreateExamination
 from services.examinations_service import ExaminationsService

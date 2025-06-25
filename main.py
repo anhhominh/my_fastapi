@@ -4,6 +4,7 @@ from pymongo import MongoClient
 from configs.databases import connect_mongodb
 from routers import examinations, users
 import logging
+from fastapi.middleware.cors import CORSMiddleware
 
 # Configure the logger (often done at the start of the application)
 logger = logging.getLogger(__name__)
@@ -37,6 +38,14 @@ async def lifespan(app: FastAPI):
 
 # Khởi tạo ứng dụng FastAPI với lifespan
 app = FastAPI(lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(users.router)
 app.include_router(examinations.router)
