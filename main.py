@@ -2,7 +2,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from pymongo import MongoClient
 from configs.databases import connect_mongodb
-from routers import users
+from routers import examinations, users
 import logging
 
 # Configure the logger (often done at the start of the application)
@@ -39,6 +39,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 app.include_router(users.router)
+app.include_router(examinations.router)
 
 @app.get("/")
 async def root():
