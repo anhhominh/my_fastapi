@@ -1,6 +1,6 @@
 from commons.exp_cache import EXP_CACHE
 from configs.redis import connect_redis
-from main import logger,db_client
+from configs.databases import logger,db_client
 from models.users_model import UsersModel
 
 class UsersRepository:

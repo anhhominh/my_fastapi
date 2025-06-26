@@ -1,22 +1,9 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
-from pymongo import MongoClient
 from configs.databases import connect_mongodb
 from routers import examinations, users
-import logging
 from fastapi.middleware.cors import CORSMiddleware
-
-# Configure the logger (often done at the start of the application)
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO) # Set the minimum level to log
-# Create a console handler and add it to the logger
-console_handler = logging.StreamHandler()
-formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(name)s - %(message)s')
-console_handler.setFormatter(formatter)
-logger.addHandler(console_handler)
-
-#--- Khởi tạo db_client
-db_client: MongoClient = None
+from configs.databases import logger,db_client
 
 # --- Lifespan Event Handler ---
 @asynccontextmanager
