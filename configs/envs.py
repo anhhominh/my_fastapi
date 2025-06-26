@@ -7,7 +7,7 @@ class Env(BaseModel):
     REDIS_NODE : str = os.getenv("REDIS_NODE",default="redis_node_1")
     REDIS_POST : str = os.getenv("REDIS_POST",default=6379)
     CELERY_URL : str = os.getenv("CELERY_URL", default='amqp://guest@localhost//')
-    SQLALCHEMY_DATABASE_URL : str = os.getenv("SQLALCHEMY_DATABASE_URL",default='postgresql://postgres:Bright#1270@localhost/fastapi')
+    SQLALCHEMY_DATABASE_URL : str = os.getenv("SQLALCHEMY_DATABASE_URL",default='postgresql://postgres:localhost/fastapi')
 
 # Create an instance of the Env class
 settings = Env()
